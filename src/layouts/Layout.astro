@@ -1,5 +1,6 @@
 ---
 import "@fontsource-variable/jost";
+import Header from "src/components/Header.astro";
 import SmokeBack from "src/components/SmokeBack.astro";
 interface Props {
   title: string;
@@ -20,6 +21,7 @@ const { title } = Astro.props;
   </head>
   <body>
     <SmokeBack />
+    <Header />
     <div class="max-w-6xl px-10 pt-40 mx-auto">
       <slot />
     </div>
