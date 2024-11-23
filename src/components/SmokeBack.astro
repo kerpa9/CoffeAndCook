@@ -5,8 +5,8 @@
 
   const $bkg = document.getElementById("smoke_bkg");
 
-  const w = window.innerWidth;
-  const h = window.innerHeight;
+  let w = window.innerWidth;
+  let h = window.innerHeight;
 
   //Initial Three.js
   //Camera, scena, rendericer
@@ -17,7 +17,7 @@
   //Luz fireccional
   const light = new THREE.DirectionalLight(0xffffff, 0.5);
 
-  light.position.set(-1, 3, 1);
+  light.position.set(1, 4, 3);
   scene.add(light);
 
   //Camera
@@ -34,6 +34,9 @@
   renderer.setClearColor(0x333333, 1);
 
   $bkg?.appendChild(renderer.domElement);
+
+  const helper = new THREE.DirectionalLightHelper(light, 5);
+  scene.add(helper);
 
   //   //   Crear un objeto
   //   //Geometría
@@ -81,6 +84,15 @@
     }
   });
 
+  function resize() {
+    h = window.innerHeight;
+    w = window.innerWidth;
+    camera.aspect = w / h;
+    camera.updateProjectionMatrix();
+
+    renderer.setSize(w, h);
+  }
+
   function animate() {
     requestAnimationFrame(animate);
 
@@ -96,4 +108,6 @@
     renderer.render(scene, camera);
   }
   animate();
+
+  window.addEventListener("resize", resize);
 </script>
