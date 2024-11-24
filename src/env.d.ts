@@ -1,7 +1,17 @@
+/// <reference path="../.astro/db-types.d.ts" />
 /// <reference path="../.astro/types.d.ts" />
+/// <reference types="astro/client" />
 
-import type { Light } from "three";
+interface ImportMetaEnv {
+  readonly API_URL: string;
+}
 
-interface Window {
-  getThemePreference(): "dark" | "light";
+interface ImportMeta {
+  readonly env: ImportMetaEnv;
+}
+
+declare global {
+  interface Window {
+    toast: function;
+  }
 }

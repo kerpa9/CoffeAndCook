@@ -1,18 +1,32 @@
 ---
-import Layout from "../layouts/Layout.astro";
-import PrincipalDate from "../sections/PrincipalDate.astro";
-import Countdown from "../sections/Countdown.astro";
-import Footer from "../sections/Footer.astro";
-import Hero from "../sections/Hero.astro";
-import Info from "../sections/Info.astro";
+import "@fontsource-variable/jost";
+import Layout from "src/layouts/Layout.astro";
+import Hero from "src/sections/Hero.astro";
+interface Props {
+  title: string;
+}
+
+const { title } = Astro.props;
 ---
 
-<Layout title="Coffe King">
-  <Hero />
-  <main>
-    <PrincipalDate />
-    <Info />
-    <Countdown />
-  </main>
-  <Footer />
-</Layout>
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="description" content="Astro description" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/Logo.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+  </head>
+  <body
+    class="overflow-x-hidden selection:bg-primary selection:text-secondary [&:focus-visible]:outline-none [&:focus-visible]:ring-2 [&_:focus-visible]:ring-primary"
+  >
+    <Layout description="Coffe" title="Coffe King">
+      <div class="max-w-6xl px-10 pt-40 mx-auto">
+        <slot />
+        <Hero />
+      </div>
+    </Layout>
+  </body>
+</html>
